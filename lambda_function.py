@@ -27,18 +27,15 @@ def lambda_handler(event, context):
     driver = webdriver.Chrome(chrome_options=chrome_options)
     page_data = ""
     driver.get(
-        "https://salescenter.deere.com/HAResultList?serviceBeanName=thServiceAllComponents&runTest=true&resultFormat=xml")
+        "https://www.gunbroker.com")
     for i in range(60):
         try:
-            if driver.find_element_by_xpath(
-                    "(.//*[normalize-space(text()) and normalize-space(.)='Sales Center'])[1]/following::span[1]").is_displayed(): break
+            1=1
         except:
             pass
         time.sleep(1)
     else:
         return("time out")
-    driver.get(
-        "https://salescenter.deere.com/HAResultList?serviceBeanName=thServiceAllComponents&runTest=true&resultFormat=xml")
     time.sleep(3)
     page_data = driver.page_source
     driver.close()
